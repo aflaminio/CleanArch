@@ -1,6 +1,7 @@
 using CleanArch.Mvc.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using CleanArch.InfraData.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<UniversityDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UniversityDBConnection"));
+});
 
 var app = builder.Build();
 
