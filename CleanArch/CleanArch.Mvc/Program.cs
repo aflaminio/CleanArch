@@ -2,6 +2,7 @@ using CleanArch.Mvc.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CleanArch.InfraData.Context;
+using CleanArch.InfraIOC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,8 @@ builder.Services.AddDbContext<UniversityDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("UniversityDBConnection"));
 });
+
+DependencyContainer.RegisterServices(builder.Services); 
 
 var app = builder.Build();
 
