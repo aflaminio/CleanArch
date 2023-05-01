@@ -16,10 +16,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+connectionString = builder.Configuration.GetConnectionString("UniversityDBConnection");
 builder.Services.AddDbContext<UniversityDBContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("UniversityDBConnection"));
-});
+    options.UseSqlServer(connectionString));
 
 DependencyContainer.RegisterServices(builder.Services); 
 
