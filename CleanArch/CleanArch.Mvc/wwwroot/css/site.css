@@ -2,7 +2,7 @@
     padding: 24px;
 }
 
-course-image{
+.course-image{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -10,7 +10,7 @@ course-image{
     width: 230px;
 }
 
-course-image-container{
+.course-image-container{
     padding: 8px;
     background-color : #fff;
     border-radius: 2px;
